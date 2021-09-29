@@ -19,8 +19,9 @@ import com.example.yournotes.ui.theme.YourNotesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-@ExperimentalAnimationApi
+//@ExperimentalAnimationApi
 class MainActivity : ComponentActivity() {
+    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("HomeScreen", "Entered OnCreate")
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     Log.d("HomeScreen", "Entered MainActivity")
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = Screen.NoteScreen.route ){
-                        try {
+
                             composable(route = Screen.NoteScreen.route) {
                                 NotesScreen(navController = navController)
                             }
@@ -54,13 +55,10 @@ class MainActivity : ComponentActivity() {
                                 AddEditNoteScreen(navController = navController, noteColor = color)
                             }
                         }
-                        catch (e: Exception){
-                            Log.e("HomeScreen",e.toString())
-                        }
                     }
                 }
             }
         }
     }
-}
+
 
